@@ -8,9 +8,10 @@ class Exterminator extends Phaser.Physics.Arcade.Sprite {
         this.init()
     }
     init() {
+        this.setPipeline('Light2D')
         this.attacking = false;
         this.damage = 0
-        this.hp = 40//rand to 20/25 
+        this.hp = (Math.floor(Math.random(5)) + 20)
         anims(this.scene.anims)
         this.setOrigin(0, 0)
         this.originalWidth = this.width
@@ -21,6 +22,18 @@ class Exterminator extends Phaser.Physics.Arcade.Sprite {
         this.once('appear', () => {
             this.body.setSize(this.width, this.height, true)
             this.play('skyAttack', true)
+            let lite = this.scene.lights.addLight(this.x + 50, this.y + 50, 100, 0xffffff, 2)
+            let lite2 = this.scene.lights.addLight(this.x + 50, this.y + 100, 100, 0xffffff, 2)
+            let lite3 = this.scene.lights.addLight(this.x + 50, this.y + 200, 100, 0xffffff, 2)
+
+            let timer2 = this.scene.time.addEvent({
+                delay: 500,
+                callback: () => {
+                    lite.setVisible(false);
+                    lite2.setVisible(false);
+                    lite3.setVisible(false);
+                }
+            })
             this.y += 50
             this.setSize(this.width - 60, this.height, true)
             this.scene.time.addEvent({
@@ -56,22 +69,32 @@ class Exterminator extends Phaser.Physics.Arcade.Sprite {
             this.setVelocity(0)
             this.body.setSize(this.width, this.height, true)
         })
+        this.once('Phaser lite', () => {
+            this.lite4 = this.scene.lights.addLight(this.x + 50, this.y + 50, 100, 0xffffff, 2)
+            this.lite5 = this.scene.lights.addLight(this.x + 50, this.y + 100, 100, 0xffffff, 2)
+            this.lite6 = this.scene.lights.addLight(this.x + 50, this.y + 200, 100, 0xffffff, 2)
+        })
     }
     attack() {
         this.attacking = true;
         if (this.hp <= 5) {
             this.chain(['vanish', 'skyAttack', 'skyAttack'])
             this.scene.time.addEvent({
-                delay: 2200,
+                delay: 1800,
                 callback: () => {
                     this.emit('setSize')
+                    this.emit('Phaser lite')
                 },
                 callbackScope: this,
                 loop: false
             })
+
             this.scene.time.addEvent({
                 delay: 2250,
                 callback: () => {
+                    this.lite4.setVisible(false);
+                    this.lite5.setVisible(false);
+                    this.lite6.setVisible(false);
                     this.damage = 0
                     this.modeEXT = 'dead'
                     this.destroy()

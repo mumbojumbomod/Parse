@@ -36,8 +36,8 @@ class Level extends Phaser.Scene {
     spitesObjects.forEach(ject => {
       this.lights.addLight(ject.x, ject.y, 100, 0xffff00, 2.3)
     })
-    gameState.HP = this.add.sprite(470, 20, 'HF').setScrollFactor(0)
-    gameState.HPnum = this.add.sprite(420, 20, 'numH').setScrollFactor(0)
+    gameState.HP = this.add.sprite(config.width - 30, 20, 'HF').setScrollFactor(0)
+    gameState.HPnum = this.add.sprite(config.width - 80, 20, 'numH').setScrollFactor(0)
     gameState.player.addOverlap(gameState.spites, () => {
       gameState.player.HPint--
     })
@@ -56,7 +56,7 @@ class Level extends Phaser.Scene {
       gameState.player.HPint--
     })
     const frontA = map.createLayer('frontA', tileset).setPipeline('Light2D')
-    gameState.HPtext = this.add.text(411, 18, '1000', { fontSize: '8px', fill: '#00a808' }).setScrollFactor(0);
+    gameState.HPtext = this.add.text(config.width - 90, 18, '1000', { fontSize: '8px', fill: '#00a808' }).setScrollFactor(0);
     ///enemies
     gameState.saber = this.physics.add.group({
       allowGravity: true,
@@ -211,28 +211,28 @@ class Level extends Phaser.Scene {
 
     gameState.HPtext.setText(gameState.player.HPint)
     if (gameState.player.HPint < 1000) {
-      gameState.HPtext.x = 413
+      gameState.HPtext.x = config.width - 86
     }
     if (gameState.player.HPint < 100) {
-      gameState.HPtext.x = 415.5
+      gameState.HPtext.x = config.width - 84
     }
     if (gameState.player.HPint < 10) {
-      gameState.HPtext.x = 418
+      gameState.HPtext.x = config.width - 80
     }
     if (gameState.player.HPint <= 800) {
-      gameState.HP = this.add.sprite(470, 20, 'H4').setScrollFactor(0)
+      gameState.HP = this.add.sprite(config.width - 30, 20, 'H4').setScrollFactor(0)
     }
     if (gameState.player.HPint <= 600) {
-      gameState.HP = this.add.sprite(470, 20, 'H3').setScrollFactor(0)
+      gameState.HP = this.add.sprite(config.width - 30, 20, 'H3').setScrollFactor(0)
     }
     if (gameState.player.HPint <= 400) {
-      gameState.HP = this.add.sprite(470, 20, 'H2').setScrollFactor(0)
+      gameState.HP = this.add.sprite(config.width - 30, 20, 'H2').setScrollFactor(0)
     }
     if (gameState.player.HPint <= 200) {
-      gameState.HP = this.add.sprite(470, 20, 'H1').setScrollFactor(0)
+      gameState.HP = this.add.sprite(config.width - 30, 20, 'H1').setScrollFactor(0)
     }
     if (gameState.player.HPint <= 0) {
-      gameState.HP = this.add.sprite(470, 20, 'H0').setScrollFactor(0)
+      gameState.HP = this.add.sprite(config.width - 30, 20, 'H0').setScrollFactor(0)
     }
     gameState.spites.children.iterate(function (child) {
       child.anims.play('spitesAnim', true);
