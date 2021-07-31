@@ -11,7 +11,7 @@ class Level extends Phaser.Scene {
   }
   create() {
     gameState.player = new Player(this, 300, 0).setPipeline('Light2D')
-    this.lights.enable().setAmbientColor(0xffffff);
+    this.lights.enable()//.setAmbientColor(0xffffff);
     gameState.this = this
     this.createParallaxBackgrounds()
     this.createAnimations()
@@ -89,18 +89,6 @@ class Level extends Phaser.Scene {
       gameState.player.HPint -= saber.damage
     })
 
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
     gameState.exterminators = this.physics.add.group({
       allowGravity: true,
       immovable: true,
@@ -140,20 +128,6 @@ class Level extends Phaser.Scene {
         }
       }
     });
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
-    //EXT
 
   }
 
@@ -271,9 +245,9 @@ class Level extends Phaser.Scene {
 const gameState = {};
 const config = {
   type: Phaser.WEBGL,
-  width: 500,
-  height: 600,
-  scale: { mode: Phaser.Scale.FIT },
+  width: 700,
+  height: 960,
+  scale: { mode: Phaser.Scale.CENTER_BOTH },
   fps: { target: 60 },
   backgroundColor: "#ffffff",
   physics: {

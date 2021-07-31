@@ -39,8 +39,8 @@ class BotOne extends Phaser.Physics.Arcade.Sprite {
             this.setTint(0xffffff);
             this.body.setSize(32 + 70, 32).setOffset(+15, 34);
             this.x -= 50;
-            let lite = this.scene.lights.addLight(this.x + 50, this.y, 100, 0xff0019, 2)
             this.play('quickspin', true)
+            let lite = this.scene.lights.addLight(this.x + 50, this.y, 100, 0xff0019, 2)
             let timer2 = this.scene.time.addEvent({
                 delay: 100,
                 callback: () => {
