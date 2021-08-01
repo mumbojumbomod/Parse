@@ -44,6 +44,8 @@ class PreloadScene extends Phaser.Scene {
         this.load.spritesheet('ext_skyAttack', 'assets/images/exterminator/skyAttack.png', { frameWidth: 97, frameHeight: 108 });
         this.load.spritesheet('ext_vanish', 'assets/images/exterminator/vanish.png', { frameWidth: 97, frameHeight: 108 });
         this.load.spritesheet('ext_walk', 'assets/images/exterminator/walk.png', { frameWidth: 97, frameHeight: 108 });
+        //Music/Sound Effects\
+        this.load.audio('Gunshot1', ['assets/Sound/Gunshot1.mp3', 'assets/Sound/Gunshot1.ogg'])
     }
     create() {
         this.scene.start('Level')

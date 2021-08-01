@@ -202,9 +202,13 @@ class Level extends Phaser.Scene {
         } else if (playerX > exterminatorChild.x) {
           exterminatorChild.setVelocityX(+110)
           exterminatorChild.flipX = false;
+          exterminatorChild.left = false;
+          exterminatorChild.size()
         } else if (playerX < exterminatorChild.x) {
           exterminatorChild.setVelocityX(-110)
           exterminatorChild.flipX = true;
+          exterminatorChild.left = true;
+          exterminatorChild.size()
         }
       }
     })

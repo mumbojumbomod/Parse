@@ -11,6 +11,7 @@ class Exterminator extends Phaser.Physics.Arcade.Sprite {
         this.setPipeline('Light2D')
         this.attacking = false;
         this.damage = 0
+        this.left = false;
         this.hp = (Math.floor(Math.random(5)) + 20)
         anims(this.scene.anims)
         this.setOrigin(0, 0)
@@ -48,10 +49,10 @@ class Exterminator extends Phaser.Physics.Arcade.Sprite {
                 this.on('animationcomplete', () => {
                     this.modeEXT = 'follow', this.damage = 1, this.play('walk', true), this.wait++
                 })
-                this.body.setSize(this.width, this.height, true)
-                this.setSize(this.width - 75, this.height - 55, true).setOffset(37.5, 55);
+                this.size()
             }
         })
+
         this.once('ded', () => {
             this.damage = 0
             this.modeEXT = 'dead'
@@ -74,6 +75,16 @@ class Exterminator extends Phaser.Physics.Arcade.Sprite {
             this.lite5 = this.scene.lights.addLight(this.x + 50, this.y + 100, 100, 0xffffff, 2)
             this.lite6 = this.scene.lights.addLight(this.x + 50, this.y + 200, 100, 0xffffff, 2)
         })
+    }
+    size() {
+        if (this.left === false) {
+            this.body.setSize(this.width, this.height, true)
+            this.setSize(this.width - 75, this.height - 55, true).setOffset(50, 55);
+
+        } else {
+            this.body.setSize(this.width, this.height, true)
+            this.setSize(this.width - 75, this.height - 55, true).setOffset(30, 55);
+        }
     }
     attack() {
         this.attacking = true;
@@ -111,6 +122,7 @@ class Exterminator extends Phaser.Physics.Arcade.Sprite {
                 this.setSize(this.width - 75, this.height - 55, true).setOffset(37.5, 55);
                 this.damage = 1;
                 this.modeEXT = 'follow'
+                this.size()
                 this.play('walk', true)
             })
         }
@@ -126,6 +138,7 @@ class Exterminator extends Phaser.Physics.Arcade.Sprite {
             delay: 1000,
             callback: () => {
                 if (this.hp > 0) {
+                    this.size()
                     this.modeEXT = 'follow'
                 }
             },
