@@ -8,6 +8,8 @@ class Exterminator extends Phaser.Physics.Arcade.Sprite {
         this.init()
     }
     init() {
+        const lightningSoundConfig = { mute: false, volume: 1, rate: 1, detune: 0, seek: 0, loop: false, delay: 0 }
+        this.lightning = this.scene.sound.add('Lightning', lightningSoundConfig);
         this.setPipeline('Light2D')
         this.attacking = false;
         this.damage = 0
@@ -23,6 +25,7 @@ class Exterminator extends Phaser.Physics.Arcade.Sprite {
         this.once('appear', () => {
             this.body.setSize(this.width, this.height, true)
             this.play('skyAttack', true)
+            this.lightning.play();
             let lite = this.scene.lights.addLight(this.x + 50, this.y + 50, 100, 0xffffff, 2)
             let lite2 = this.scene.lights.addLight(this.x + 50, this.y + 100, 100, 0xffffff, 2)
             let lite3 = this.scene.lights.addLight(this.x + 50, this.y + 200, 100, 0xffffff, 2)
@@ -93,6 +96,7 @@ class Exterminator extends Phaser.Physics.Arcade.Sprite {
             this.scene.time.addEvent({
                 delay: 1800,
                 callback: () => {
+                    this.lightning.play();
                     this.emit('setSize')
                     this.emit('Phaser lite')
                 },
