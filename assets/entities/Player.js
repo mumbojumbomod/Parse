@@ -8,8 +8,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.init()
     }
     init() {
-        const bulletSoundConfig = { mute: false, volume: 0.4, rate: 1, detune: 0, seek: 0, loop: false, delay: 0 }
-        this.Gunshot1 = this.scene.sound.add('Gunshot1', bulletSoundConfig);
+        const bulletSoundConfig = { mute: false, volume: 100, rate: 1, detune: 0, seek: 0, loop: false, delay: 0 }
+        this.Gunshot = this.scene.sound.add('Gunshot3', bulletSoundConfig);
         this.HPint = 1000
         this.active = true;
         this.cursors = this.scene.input.keyboard.createCursorKeys();
@@ -41,7 +41,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         if (timeDifference >= 500) {
             var bullet = this.bullets.get(this.x, this.y).setPipeline('Light2D')
             if (bullet) {
-                this.Gunshot1.play();
+                this.Gunshot.play();
                 bullet.setActive(true);
                 bullet.setVisible(true);
                 if (this.left === false) {

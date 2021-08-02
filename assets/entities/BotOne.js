@@ -8,6 +8,8 @@ class BotOne extends Phaser.Physics.Arcade.Sprite {
         this.init()
     }
     init() {
+        const SensorSoundConfig = { mute: false, volume: 0.5, rate: 1, detune: 0, seek: 0, loop: true, delay: 0 }
+        this.Sensor = this.scene.sound.add('Sensor', SensorSoundConfig);
         this.setOrigin(0, 0)
         this.setPipeline('Light2D')
         this.body.setSize(this.width + 50, this.height).setOffset(-20, 34);
@@ -40,6 +42,7 @@ class BotOne extends Phaser.Physics.Arcade.Sprite {
             this.body.setSize(32 + 70, 32).setOffset(+15, 34);
             this.x -= 50;
             this.play('quickspin', true)
+            this.Sensor.play()
             let lite = this.scene.lights.addLight(this.x + 50, this.y, 100, 0xff0019, 2)
             let timer2 = this.scene.time.addEvent({
                 delay: 100,
@@ -56,6 +59,11 @@ class BotOne extends Phaser.Physics.Arcade.Sprite {
     }
     addOverlap(otherObj, callback) {
         this.scene.physics.add.overlap(this, otherObj, callback, null, this);
+    }
+    preUpdate(time, delta) {
+        super.preUpdate(time, delta)
+        if (this.mode === 'attack') {
+        }
     }
 
 }
