@@ -49,6 +49,7 @@ class PreloadScene extends Phaser.Scene {
         this.load.audio('Gunshot2', ['assets/Sound/Gunshot2.mp3', 'assets/Sound/Gunshot2.ogg'])
         this.load.audio('Gunshot3', ['assets/Sound/Gunshot3.mp3', 'assets/Sound/Gunshot3.ogg'])
         this.load.audio('Sensor', ['assets/Sound/Sensor.mp3', 'assets/Sound/Sensor.ogg'])
+        this.load.audio('gasAttack', ['assets/Sound/Gas_attack.mp3', 'assets/Sound/Gas_attack.ogg'])
         this.load.audio('Lightning', ['assets/Sound/ZAP.mp3', 'assets/Sound/ZAP.ogg'])
     }
     create() {

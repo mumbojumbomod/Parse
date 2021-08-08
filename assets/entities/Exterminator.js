@@ -8,8 +8,10 @@ class Exterminator extends Phaser.Physics.Arcade.Sprite {
         this.init()
     }
     init() {
-        const lightningSoundConfig = { mute: false, volume: 0.7, rate: 1, detune: 0, seek: 0, loop: false, delay: 0 }
+        const lightningSoundConfig = { mute: false, volume: 0.7, rate: 1, detune: 100, seek: 0, loop: false, delay: 50 }
         this.lightning = this.scene.sound.add('Lightning', lightningSoundConfig);
+        const gasSoundConfig = { mute: false, volume: 2, rate: 1, detune: 0, seek: 0, loop: false, delay: 1000 }
+        this.gasAttack = this.scene.sound.add('gasAttack', gasSoundConfig);
         this.setPipeline('Light2D')
         this.attacking = false;
         this.damage = 0
@@ -118,6 +120,7 @@ class Exterminator extends Phaser.Physics.Arcade.Sprite {
                 loop: false
             })
         } else {
+            this.gasAttack.play();
             this.setVelocity(0)
             this.body.setSize(this.width, this.height, true)
             this.setSize(this.width, this.height - 55, true).setOffset(0, 55);
