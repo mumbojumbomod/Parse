@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import anims from './playerAnims'
-class Similar extends Phaser.Physics.Arcade.Sprite {
+import Monster from './Monster'
+class Janitor extends Monster {
     constructor(scene, x, y) {
         super(scene, x, y, 'robodude');
         scene.add.existing(this)
@@ -20,4 +21,4 @@ class Similar extends Phaser.Physics.Arcade.Sprite {
     }
 
 }
-export default Similar
+export default Janitor

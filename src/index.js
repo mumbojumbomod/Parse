@@ -5,6 +5,7 @@ import Player from '../assets/entities/Player'
 import BotOne from '../assets/entities/BotOne'
 import Exterminator from '../assets/entities/Exterminator'
 import Monster from '../assets/entities/Monster'
+import Janitor from '../assets/entities/Janitor'
 class Level extends Phaser.Scene {
 
   constructor(key) {
@@ -111,7 +112,6 @@ class Level extends Phaser.Scene {
       } else {
         gameState.player.HPint -= exterminator.damage * 3;
       }
-
     })
     gameState.this.physics.add.collider(gameState.player.bullets, gameState.exterminators, (obj1, obj2) => {
       obj2.emit('appear')
@@ -121,9 +121,9 @@ class Level extends Phaser.Scene {
         //hit animation
         obj2.hitAnimation()
         if (obj2.left === false) {
-          obj2.x -=obj2.shockDistance
+          obj2.x -= obj2.shockDistance
         } else {
-          obj2.x +=obj2.shockDistance
+          obj2.x += obj2.shockDistance
         }
         if (obj2.hp <= 0) {
           obj2.modeEXT = 'dead'
@@ -134,6 +134,66 @@ class Level extends Phaser.Scene {
         }
       }
     });
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    gameState.janitors = this.physics.add.group({
+      allowGravity: true,
+      immovable: true,
+    });
+    this.physics.add.overlap(gameState.player, gameState.janitors, (player, janitor) => {
+
+    })
+    this.physics.add.collider(gameState.janitors, gameState.platforms);
+    gameState.extObjects = map.getObjectLayer('janitor')['objects'];
+    gameState.extArray = gameState.extObjects.map(extObject => {
+      let janitor = new Janitor(this, extObject.x, extObject.y - extObject.height, '_appear')
+      gameState.janitors.add(janitor)
+      return janitor
+    });
+    this.physics.add.overlap(gameState.player, gameState.janitors, (player, janitor) => {
+
+    })
+    gameState.this.physics.add.collider(gameState.player.bullets, gameState.janitors, (obj1, obj2) => {
+    });
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+    //janitors
+
 
   }
 
