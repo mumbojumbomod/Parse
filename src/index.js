@@ -166,6 +166,7 @@ class Level extends Phaser.Scene {
     gameState.extArray = gameState.extObjects.map(extObject => {
       let janitor = new Janitor(this, extObject.x, extObject.y - extObject.height, '_appear')
       gameState.janitors.add(janitor)
+      janitor.y -= 40;
       return janitor
     });
     this.physics.add.overlap(gameState.player, gameState.janitors, (player, janitor) => {
