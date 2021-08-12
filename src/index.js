@@ -120,6 +120,11 @@ class Level extends Phaser.Scene {
         obj2.hp -= 1
         //hit animation
         obj2.hitAnimation()
+        if (obj2.left === false) {
+          obj2.x -=obj2.shockDistance
+        } else {
+          obj2.x +=obj2.shockDistance
+        }
         if (obj2.hp <= 0) {
           obj2.modeEXT = 'dead'
           obj2.setVelocityX(0)
