@@ -4,6 +4,7 @@ import PreloadScene from '../assets/entities/PreloadScene'
 import Player from '../assets/entities/Player'
 import BotOne from '../assets/entities/BotOne'
 import Exterminator from '../assets/entities/Exterminator'
+import Monster from '../assets/entities/Monster'
 class Level extends Phaser.Scene {
 
   constructor(key) {
@@ -100,7 +101,7 @@ class Level extends Phaser.Scene {
     this.physics.add.collider(gameState.exterminators, gameState.platforms);
     gameState.extObjects = map.getObjectLayer('exterminator')['objects'];
     gameState.extArray = gameState.extObjects.map(extObject => {
-      let exterminator = new Exterminator(this, extObject.x, extObject.y - extObject.height)
+      let exterminator = new Monster(this, extObject.x, extObject.y - extObject.height, 'ext_appear')
       gameState.exterminators.add(exterminator)
       return exterminator
     });
