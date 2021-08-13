@@ -164,7 +164,7 @@ class Level extends Phaser.Scene {
     this.physics.add.collider(gameState.janitors, gameState.platforms);
     gameState.extObjects = map.getObjectLayer('janitor')['objects'];
     gameState.extArray = gameState.extObjects.map(extObject => {
-      let janitor = new Janitor(this, extObject.x, extObject.y - extObject.height, '_appear')
+      let janitor = new Janitor(this, extObject.x, extObject.y - extObject.height, '')
       gameState.janitors.add(janitor)
       janitor.y -= 40;
       return janitor
