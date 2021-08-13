@@ -159,20 +159,20 @@ class Level extends Phaser.Scene {
       immovable: true,
     });
     this.physics.add.overlap(gameState.player, gameState.janitors, (player, janitor) => {
-
+      janitor.emit('turnOn')
     })
     this.physics.add.collider(gameState.janitors, gameState.platforms);
     gameState.extObjects = map.getObjectLayer('janitor')['objects'];
     gameState.extArray = gameState.extObjects.map(extObject => {
-      let janitor = new Janitor(this, extObject.x, extObject.y - extObject.height, '')
+      let janitor = new Janitor(this, extObject.x, extObject.y - extObject.height, 'janitorIdle')
       gameState.janitors.add(janitor)
-      janitor.y -= 40;
       return janitor
     });
     this.physics.add.overlap(gameState.player, gameState.janitors, (player, janitor) => {
 
     })
     gameState.this.physics.add.collider(gameState.player.bullets, gameState.janitors, (obj1, obj2) => {
+      obj1.destroy()
     });
     //janitors
     //janitors

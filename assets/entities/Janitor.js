@@ -1,15 +1,29 @@
 import Phaser from 'phaser';
-import anims from './playerAnims'
 import Monster from './Monster'
-class Janitor extends Monster {
+import anims from './janitorAnims'
+import PreloadScene from './PreloadScene'
+class Janitor extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y) {
-        super(scene, x, y, 'robodude');
+        super(scene, x, y, 'janitorIdle');
         scene.add.existing(this)
         scene.physics.add.existing(this)
         this.init()
     }
     init() {
+        this.sweepMode = 'deactivated';
+        anims(this.scene.anims)
+        this.setBodySize(50, 200).setOffset(0, -170)
+        this.y -= 10;
+        this.once('turnOn', () => {
+            this.play('janitorWakeA')
+            this.setBodySize(50, 25).setOffset(0, 5)
+            this.on('animationcomplete', () => {
+                this.sweepMode = 'walking'
+                this.play('janitorShuffleA', true)
+            })
+        })    
     }
+
     addCollider(otherObj, callback) {
         this.scene.physics.add.collider(this, otherObj, callback, null, this);
     }
