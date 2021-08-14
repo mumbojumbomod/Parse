@@ -20,5 +20,5 @@ class Janitor extends Monster {
         super.preUpdate(time, delta)
     }
 
-}
+};
 export default Janitor
