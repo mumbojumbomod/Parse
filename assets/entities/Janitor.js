@@ -34,5 +34,5 @@ class Janitor extends Phaser.Physics.Arcade.Sprite {
         super.preUpdate(time, delta)
     }
 
-}
+};
 export default Janitor
