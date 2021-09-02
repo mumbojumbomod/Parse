@@ -21,7 +21,7 @@ class Janitor extends Phaser.Physics.Arcade.Sprite {
                 this.sweepMode = 'walking'
                 this.play('janitorShuffleA', true)
             })
-        })    
+        })
     }
 
     addCollider(otherObj, callback) {
@@ -34,5 +34,5 @@ class Janitor extends Phaser.Physics.Arcade.Sprite {
         super.preUpdate(time, delta)
     }
 
-};
+}
 export default Janitor
