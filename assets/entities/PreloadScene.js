@@ -63,7 +63,7 @@ class PreloadScene extends Phaser.Scene {
         this.load.spritesheet('janitorSweep', 'assets/images/janitor/Sweep.png', { frameWidth: 88, frameHeight: 30 });
     }
     create() {
-        this.scene.start('Level')
+        this.scene.start('MenuScene')
     }
 }
 export default PreloadScene

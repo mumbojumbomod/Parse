@@ -1,6 +1,7 @@
 
 import Phaser from "phaser";
 import PreloadScene from '../assets/entities/PreloadScene'
+import MenuScene from '../assets/entities/MenuScene'
 import Player from '../assets/entities/Player'
 import BotOne from '../assets/entities/BotOne'
 import Exterminator from '../assets/entities/Exterminator'
@@ -326,11 +327,17 @@ class Level extends Phaser.Scene {
     });
   }
 }
+let width = 700
+let height = 960
 const gameState = {};
+const shared_Config = {
+  width: width,
+  height: height,
+}
+
 const config = {
   type: Phaser.WEBGL,
-  width: 700,
-  height: 960,
+  ...shared_Config,
   scale: { mode: Phaser.Scale.CENTER_BOTH },
   fps: { target: 60 },
   backgroundColor: "#ffffff",
@@ -343,7 +350,7 @@ const config = {
 
     }
   },
-  scene: [PreloadScene, Level]
+  scene: [PreloadScene, new MenuScene(shared_Config), new Level(shared_Config)]
 };
 
 const game = new Phaser.Game(config);
