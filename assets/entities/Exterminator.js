@@ -86,7 +86,7 @@ class Exterminator extends Phaser.Physics.Arcade.Sprite {
         if (this.left === false) {
             this.body.setSize(this.width, this.height, true)
             this.setSize(this.width - 75, this.height - 55, true).setOffset(50, 55);
-
+            
         } else {
             this.body.setSize(this.width, this.height, true)
             this.setSize(this.width - 75, this.height - 55, true).setOffset(30, 55);

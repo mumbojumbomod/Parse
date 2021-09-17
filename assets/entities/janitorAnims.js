@@ -1,7 +1,7 @@
 export default anims => {
     anims.create({
-        key: 'JanitorDeathA',
-        frames: anims.generateFrameNumbers('JanitorDeath', { start: 0, end: 4 }),
+        key: 'janitorDeathA',
+        frames: anims.generateFrameNumbers('janitorDeath', { start: 0, end: 4 }),
         frameRate: 10,
         repeat: 0,
     });
