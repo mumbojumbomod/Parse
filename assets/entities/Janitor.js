@@ -10,7 +10,6 @@ class Janitor extends Phaser.Physics.Arcade.Sprite {
         this.init()
     }
     init() {
-        //this.anchor.X = 100;
         this.left = false;
         this.sweepMode = 'deactivated';
         anims(this.scene.anims)
