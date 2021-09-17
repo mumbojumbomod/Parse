@@ -52,12 +52,12 @@ class PreloadScene extends Phaser.Scene {
         this.load.audio('gasAttack', ['assets/Sound/Gas_attack.mp3', 'assets/Sound/Gas_attack.ogg'])
         this.load.audio('Lightning', ['assets/Sound/ZAP.mp3', 'assets/Sound/ZAP.ogg'])
         //Shock Sweeper
-        this.load.spritesheet('janitorDeath', 'assets/images/janitor/death.png', { frameWidth: 88, frameHeight: 30 });
-        this.load.spritesheet('janitorHit', 'assets/images/janitor/hit.png', { frameWidth: 88, frameHeight: 30 });
-        this.load.spritesheet('janitorWalk', 'assets/images/janitor/shuffle.png', { frameWidth: 88, frameHeight: 30 });
+        this.load.spritesheet('janitorDeath', 'assets/images/janitor/death.png', { frameWidth: 70, frameHeight: 30 });
+        this.load.spritesheet('janitorHit', 'assets/images/janitor/hit.png', { frameWidth: 56, frameHeight: 30 });
+        this.load.spritesheet('janitorWalk', 'assets/images/janitor/shuffle.png', { frameWidth: 56, frameHeight: 30 });
         this.load.spritesheet('janitorIdle', 'assets/images/janitor/idle.png', { frameWidth: 88, frameHeight: 30 });
-        this.load.spritesheet('janitorShuffle', 'assets/images/janitor/shuffle.png', { frameWidth: 88, frameHeight: 30 });
-        this.load.spritesheet('janitorSlam', 'assets/images/janitor/slam.png', { frameWidth: 88, frameHeight: 30 });
+        this.load.spritesheet('janitorShuffle', 'assets/images/janitor/shuffle.png', { frameWidth: 56, frameHeight: 30 });
+        this.load.spritesheet('janitorSlam', 'assets/images/janitor/slam.png', { frameWidth: 59, frameHeight: 30 });
         this.load.spritesheet('janitorSpinSlam', 'assets/images/janitor/spinSlam.png', { frameWidth: 88, frameHeight: 30 });
         this.load.spritesheet('janitorWake', 'assets/images/janitor/wake.png', { frameWidth: 88, frameHeight: 30 });
         this.load.spritesheet('janitorSweep', 'assets/images/janitor/Sweep.png', { frameWidth: 88, frameHeight: 30 });

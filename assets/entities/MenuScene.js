@@ -14,6 +14,8 @@ class MenuScene extends BaseScene {
     create() {
         super.create()
         this.createMenu(this.menu, this.setupMenuEvents.bind(this))
+        this.titleText = this.add.text(this.config.width / 4, this.config.height - 500, "PARSE", { fontSize: '120px', fill: '#690a2d' })
+        this.titleText = this.add.text(this.config.width / 4, this.config.height - 400, "By Talus", { fontSize: '50px', fill: '#690a2d' })
     }
     setupMenuEvents(menuItem) {
         const textGO = menuItem.textGO
@@ -31,6 +33,9 @@ class MenuScene extends BaseScene {
             }
             if (menuItem.text === "About") {
                 this.scene.start("AboutScene")
+            }
+            if (menuItem.text === "Exit") {
+                alert('THERE IS NO ESCAPE(unless you close the tab...)')
             }
         })
     }

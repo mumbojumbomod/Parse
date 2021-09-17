@@ -38,7 +38,6 @@ class BotOne extends Phaser.Physics.Arcade.Sprite {
             this.mode = 'attack';
             this.play('wlak', false)
             moveTween.stop()
-            this.setTint(0xffffff);
             this.body.setSize(32 + 70, 32).setOffset(+15, 34);
             this.x -= 50;
             this.play('quickspin', true)

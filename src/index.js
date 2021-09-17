@@ -1,6 +1,7 @@
 
 import Phaser from "phaser";
 import PreloadScene from '../assets/entities/PreloadScene'
+import AboutScene from '../assets/entities/AboutScene'
 import MenuScene from '../assets/entities/MenuScene'
 import Player from '../assets/entities/Player'
 import BotOne from '../assets/entities/BotOne'
@@ -328,7 +329,7 @@ class Level extends Phaser.Scene {
   }
 }
 let width = 700
-let height = 960
+let height = 500
 const gameState = {};
 const shared_Config = {
   width: width,
@@ -350,7 +351,7 @@ const config = {
 
     }
   },
-  scene: [PreloadScene, new MenuScene(shared_Config), new Level(shared_Config)]
+  scene: [PreloadScene, new MenuScene(shared_Config), new AboutScene(shared_Config), new Level(shared_Config)]
 };
 
 const game = new Phaser.Game(config);
