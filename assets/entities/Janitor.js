@@ -23,7 +23,7 @@ class Janitor extends Phaser.Physics.Arcade.Sprite {
                 this.sweepMode = 'walking'
                 this.play('janitorShuffleA', true)
             })
-        })    
+        })
     }
     move(){
         if(this.left === true){
@@ -46,5 +46,5 @@ class Janitor extends Phaser.Physics.Arcade.Sprite {
         super.preUpdate(time, delta)
     }
 
-};
+}
 export default Janitor

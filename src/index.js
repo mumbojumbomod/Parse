@@ -297,7 +297,20 @@ class Level extends Phaser.Scene {
         }
       }
     })
-
+    gameState.janitors.children.iterate(function (janitorChild) {
+      let playerX = gameState.player.x - 100;
+      if (janitorChild.sweepMode === 'walking') {
+        if (playerX > janitorChild.x) {
+          janitorChild.setVelocityX(+80)
+          janitorChild.flipX = false;
+        } else if (playerX < janitorChild.x) {
+          janitorChild.setVelocityX(-80)
+          janitorChild.flipX = true;
+        } else if (playerX = janitorChild.x) {
+          janitorChild.setVelocityX(0)
+        }
+      }
+    })
     gameState.HPtext.setText(gameState.player.HPint)
     if (gameState.player.HPint < 1000) {
       gameState.HPtext.x = config.width - 86
