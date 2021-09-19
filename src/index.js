@@ -253,13 +253,30 @@ class Level extends Phaser.Scene {
     gameState.saber.children.iterate(function (sab) {
       let enimGoal = gameState.player.x - 100;
       if (sab.mode === 'attack') {
-        if (enimGoal > sab.x) {
+        if (sab.x > enimGoal - 5 && sab.x < enimGoal + 5) {
+          sab.setVelocityX(0)
+        } else if (enimGoal > sab.x) {
           sab.setVelocityX(+80)
         } else if (enimGoal < sab.x) {
           sab.setVelocityX(-80)
-        } else if (enimGoal = sab.x) {
-          sab.setVelocityX(0)
         }
+      }
+    })
+    gameState.janitors.children.iterate(function (janitor) {
+      let playerX = gameState.player.x-25;
+      if (janitor.sweepMode === 'walking') {
+        if (janitor.x > playerX - 50 && janitor.x < playerX + 50) {
+          janitor.setVelocityX(0)
+          janitor.sweepMode = 'sweepOrSlam'
+        } else if (playerX > janitor.x) {
+          janitor.setVelocityX(+100)
+          janitor.flipX = false;
+        } else if (playerX < janitor.x) {
+          janitor.setVelocityX(-100)
+          janitor.flipX = true;
+        }
+      } else {
+        janitor.setVelocityX(0)
       }
     })
     gameState.exterminators.children.iterate(function (exterminatorChild) {
@@ -267,6 +284,7 @@ class Level extends Phaser.Scene {
       if (exterminatorChild.modeEXT === 'follow') {
         if (exterminatorChild.x > playerX - 5 && exterminatorChild.x < playerX + 5) {
           exterminatorChild.modeEXT = 'gas attack'
+          console.log('nulled')
           exterminatorChild.setVelocity(0)
         } else if (playerX > exterminatorChild.x) {
           exterminatorChild.setVelocityX(+110)

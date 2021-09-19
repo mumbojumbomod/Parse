@@ -10,6 +10,8 @@ class Janitor extends Phaser.Physics.Arcade.Sprite {
         this.init()
     }
     init() {
+        //this.anchor.X = 100;
+        this.left = false;
         this.sweepMode = 'deactivated';
         anims(this.scene.anims)
         this.setBodySize(50, 200).setOffset(0, -170)
@@ -23,7 +25,17 @@ class Janitor extends Phaser.Physics.Arcade.Sprite {
             })
         })
     }
-
+    move(){
+        if(this.left === true){
+            this.setOffset(50,5)
+            this.x-=30
+            this.sweep()
+        } else {
+            this.setOffset(0, 5)
+            this.x+=30;
+            this.sweep()
+        }
+    }
     addCollider(otherObj, callback) {
         this.scene.physics.add.collider(this, otherObj, callback, null, this);
     }
