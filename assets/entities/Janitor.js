@@ -1,4 +1,4 @@
-import Phaser from 'phaser';
+import Phaser, { Math } from 'phaser';
 import Monster from './Monster'
 import anims from './janitorAnims'
 import PreloadScene from './PreloadScene'
@@ -10,7 +10,11 @@ class Janitor extends Phaser.Physics.Arcade.Sprite {
         this.init()
     }
     init() {
-        //this.anchor.X = 100;
+        this.rand = Phaser.Math.Between(1, 2)
+        this.HPrand = Phaser.Math.Between(7, 12)
+        console.log(this.rand)
+        this.hp = this.HPrand
+        this.damage = 0
         this.left = false;
         this.sweepMode = 'deactivated';
         anims(this.scene.anims)
@@ -22,17 +26,40 @@ class Janitor extends Phaser.Physics.Arcade.Sprite {
             this.on('animationcomplete', () => {
                 this.sweepMode = 'walking'
                 this.play('janitorShuffleA', true)
+                this.damage = 1
             })
         })
+        this.once('Clorox', () => {
+            this.damage = 0;
+            this.play('janitorDeathA', true)
+            this.on('animationcomplete', () => { this.destroy() })
+        })
     }
-    move(){
-        if(this.left === true){
-            this.setOffset(50,5)
-            this.x-=30
+    hitAnimation() {
+        if (this.sweepMode != 'deactivated') {
+            this.sweepMode = 'hit'
+            this.setVelocity(0)
+            this.play('janitorHitA', true)
+            this.scene.time.addEvent({
+                delay: 1000,
+                callback: () => {
+                    if (this.hp > 0) {
+                        this.modeEXT = 'walk'
+                    }
+                },
+                callbackScope: this,
+                loop: false
+            })
+        }
+    }
+    move() {
+        if (this.left === true) {
+            this.setOffset(50, 5)
+            this.x -= 30
             this.sweep()
         } else {
             this.setOffset(0, 5)
-            this.x+=30;
+            this.x += 30;
             this.sweep()
         }
     }
@@ -44,6 +71,22 @@ class Janitor extends Phaser.Physics.Arcade.Sprite {
     }
     preUpdate(time, delta) {
         super.preUpdate(time, delta)
+        if (this.sweepMode === 'sweepOrSlam') {
+            if (this.rand === 1) {
+                this.damage = 10
+                this.setBodySize(100, 25).setOffset(-15, 5)
+                this.play('janitorSpinSlamA', true)
+            } else if (this.rand === 2) {
+                this.damage = 10
+                this.setBodySize(100, 25).setOffset(-15, 5)
+                this.play('janitorSlamA', true)
+            }
+            this.on('animationcomplete', () => {
+                this.damage = 1
+                this.setBodySize(50, 25).setOffset(0, 5)
+                this.sweepMode = 'walking'
+            })
+        }
     }
 
 }

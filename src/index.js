@@ -171,11 +171,21 @@ class Level extends Phaser.Scene {
       return janitor
     });
     this.physics.add.overlap(gameState.player, gameState.janitors, (player, janitor) => {
-
+      gameState.player.HPint -= janitor.damage
     })
     gameState.this.physics.add.collider(gameState.player.bullets, gameState.janitors, (obj1, obj2) => {
       obj1.destroy()
+      if (obj2.sweepMode != 'deactivated') {
+        obj2.hp -= 1
+        obj2.hitAnimation()
+        if (obj2.hp <= 0) {
+          obj2.sweepMode = 'dead'
+          obj2.setVelocityX(0)
+          obj2.emit('Clorox')
+        }
+      }
     });
+
     //janitors
     //janitors
     //janitors
@@ -263,20 +273,18 @@ class Level extends Phaser.Scene {
       }
     })
     gameState.janitors.children.iterate(function (janitor) {
-      let playerX = gameState.player.x-25;
+      let playerX = gameState.player.x - 50;
       if (janitor.sweepMode === 'walking') {
         if (janitor.x > playerX - 50 && janitor.x < playerX + 50) {
           janitor.setVelocityX(0)
           janitor.sweepMode = 'sweepOrSlam'
         } else if (playerX > janitor.x) {
-          janitor.setVelocityX(+100)
+          janitor.setVelocityX(100)
           janitor.flipX = false;
         } else if (playerX < janitor.x) {
           janitor.setVelocityX(-100)
           janitor.flipX = true;
         }
-      } else {
-        janitor.setVelocityX(0)
       }
     })
     gameState.exterminators.children.iterate(function (exterminatorChild) {
