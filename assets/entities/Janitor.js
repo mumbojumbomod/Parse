@@ -10,9 +10,12 @@ class Janitor extends Phaser.Physics.Arcade.Sprite {
         this.init()
     }
     init() {
+        this.lite = this.scene.lights.addLight(this.x, this.y, 100, 0xffffff, 2)
+        this.lite.setVisible(false);
         this.rand = Phaser.Math.Between(1, 2)
         this.HPrand = Phaser.Math.Between(7, 12)
         console.log(this.rand)
+        this.setPipeline('Light2D')
         this.hp = this.HPrand
         this.damage = 0
         this.left = false;
@@ -34,6 +37,7 @@ class Janitor extends Phaser.Physics.Arcade.Sprite {
             this.play('janitorDeathA', true)
             this.on('animationcomplete', () => { this.destroy() })
         })
+
     }
     hitAnimation() {
         if (this.sweepMode != 'deactivated') {
@@ -71,20 +75,32 @@ class Janitor extends Phaser.Physics.Arcade.Sprite {
     }
     preUpdate(time, delta) {
         super.preUpdate(time, delta)
+        this.lite.x = this.x
+        this.lite.y = this.y
         if (this.sweepMode === 'sweepOrSlam') {
-            if (this.rand === 1) {
-                this.damage = 10
+            if (this.rand === 1 && this.hp > 3) {
+                this.lite.setVisible(true);
+                this.damage = 3
                 this.setBodySize(100, 25).setOffset(-15, 5)
                 this.play('janitorSpinSlamA', true)
-            } else if (this.rand === 2) {
-                this.damage = 10
+            } else if (this.rand === 2 && this.hp > 3) {
+                this.lite.setVisible(true);
+                this.damage = 3
                 this.setBodySize(100, 25).setOffset(-15, 5)
                 this.play('janitorSlamA', true)
             }
+            if (this.hp <= 3) {
+                this.lite.setVisible(true);
+                this.damage = 5
+                this.setBodySize(120, 25).setOffset(-15, 5)
+                this.play('janitorSweepA', true)
+            }
+
             this.on('animationcomplete', () => {
                 this.damage = 1
                 this.setBodySize(50, 25).setOffset(0, 5)
                 this.sweepMode = 'walking'
+                this.lite.setVisible(false);
             })
         }
     }

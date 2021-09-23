@@ -58,7 +58,7 @@ class PreloadScene extends Phaser.Scene {
         this.load.spritesheet('janitorIdle', 'assets/images/janitor/idle.png', { frameWidth: 88, frameHeight: 30 });
         this.load.spritesheet('janitorShuffle', 'assets/images/janitor/shuffle.png', { frameWidth: 56, frameHeight: 30 });//NULL
         this.load.spritesheet('janitorSlam', 'assets/images/janitor/slam.png', { frameWidth: 59, frameHeight: 30 });//NULL
-        this.load.spritesheet('janitorSpinSlam', 'assets/images/janitor/spinSlam.png', { frameWidth: 64, frameHeight: 30 });
+        this.load.spritesheet('janitorSpinSlam', 'assets/images/janitor/spinSlam.png', { frameWidth: 64, frameHeight: 30 });//NULL
         this.load.spritesheet('janitorWake', 'assets/images/janitor/wake.png', { frameWidth: 88, frameHeight: 30 });
         this.load.spritesheet('janitorSweep', 'assets/images/janitor/Sweep.png', { frameWidth: 88, frameHeight: 30 });
     }
