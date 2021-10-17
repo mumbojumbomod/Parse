@@ -158,9 +158,26 @@ class Level extends Phaser.Scene {
     });
     gameState.BkeyObjs = map.getObjectLayer('BKey')['objects'];
     //console.log(gameState.BkeyObjs)
-    gameState.BkeyObj = gameState.BkeyObjs.map(keyobj => {
+    gameState.BkeyObj = gameState.BkeyObjs.map((keyobj, keyIndex) => {
       let key = new Bkey(this, keyobj.x, keyobj.y - keyobj.height - 20, 'bluekey')
+      switch (keyIndex) {
+        case 0:
+          key.tint = (0x0011ff)
+          break;
+        case 1:
+          key.tint = (0xff0015)//ff00ea
+          break;
+        case 2:
+          key.tint = (0xff00ea)
+          break;
+        case 3:
+          key.tint = (0xffd500)
+          break;
+        default:
+
+      }
       gameState.Bkey.add(key)
+      return key;
     });
 
     //gameState.Bkey.children.each(key => console.log(key.collected));
@@ -184,8 +201,24 @@ class Level extends Phaser.Scene {
       immovable: true,
     });
     gameState.doorObjects = map.getObjectLayer('doors')['objects'];
-    gameState.doorArray = gameState.doorObjects.map(doorobj => {
+    gameState.doorArray = gameState.doorObjects.map((doorobj, doorIndex) => {
       let door = new Door(this, doorobj.x, doorobj.y - doorobj.height - 20, 'door')
+      switch (doorIndex) {
+        case 0:
+          door.lockedLight.setColor(0x0011ff)
+          break;
+        case 1:
+          door.lockedLight.setColor(0xff0015)//ff00ea
+          break;
+        case 2:
+          door.lockedLight.setColor(0xff00ea)
+          break;
+        case 3:
+          door.lockedLight.setColor(0xffd500)
+          break;
+        default:
+
+      }
       gameState.doors.add(door)
       return door
     });
@@ -203,6 +236,7 @@ class Level extends Phaser.Scene {
         } else {
           collisionDoor.lockedLight.intensity = 0;
           collisionDoor.UNlockedLight.intensity = 8;
+          collisionDoor.emit('open')
         }
       })
     })

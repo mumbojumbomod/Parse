@@ -53,4 +53,12 @@ export default anims => {
         frameRate: 10,
         repeat: 0,
     });
+    //Dooranim
+    anims.create({
+        key: 'dooranim',
+        frames: anims.generateFrameNumbers('dooranim', { start: 0, end: 14 }),
+        frameRate: 10,
+        repeat: 0,
+    });
+
 }
