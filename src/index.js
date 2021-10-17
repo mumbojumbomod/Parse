@@ -8,6 +8,8 @@ import BotOne from '../assets/entities/BotOne'
 import Exterminator from '../assets/entities/Exterminator'
 import Monster from '../assets/entities/Monster'
 import Janitor from '../assets/entities/Janitor'
+import Door from "../assets/entities/Door";
+import Bkey from "../assets/entities/Bkey";
 class Level extends Phaser.Scene {
 
   constructor(key) {
@@ -136,26 +138,86 @@ class Level extends Phaser.Scene {
         }
       }
     });
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    gameState.Bkey = this.physics.add.group({
+      allowGravity: false,
+      immovable: true,
+    });
+    gameState.BkeyObjs = map.getObjectLayer('BKey')['objects'];
+    //console.log(gameState.BkeyObjs)
+    gameState.BkeyObj = gameState.BkeyObjs.map(keyobj => {
+      let key = new Bkey(this, keyobj.x, keyobj.y - keyobj.height - 20, 'bluekey')
+      gameState.Bkey.add(key)
+    });
+
+    //gameState.Bkey.children.each(key => console.log(key.collected));
+    //forEach(key => console.log(key.collected))
+
+    this.physics.add.overlap(gameState.player, gameState.Bkey, function (player, key) {
+      this.tweens.add({
+        targets: key,
+        y: key.y - 100,
+        alpha: 0,
+        duration: 801,
+        ease: "Cubic.easeOut",
+        callbackScope: this,
+        onComplete: function () {
+          key.collected = true
+        }
+      });
+    }, null, this);
+    gameState.doors = this.physics.add.group({
+      allowGravity: true,
+      immovable: true,
+    });
+    gameState.doorObjects = map.getObjectLayer('doors')['objects'];
+    gameState.doorArray = gameState.doorObjects.map(doorobj => {
+      let door = new Door(this, doorobj.x, doorobj.y - doorobj.height - 20, 'door')
+      gameState.doors.add(door)
+      return door
+    });
+
+
+    this.physics.add.overlap(gameState.player, gameState.doors, (player, collisionDoor) => {
+      gameState.doors.children.each((door, doorIndex) => {
+        gameState.Bkey.children.each((key, keyIndex) => {
+          if (doorIndex === keyIndex && key.collected === true) {
+            door.status = 'Unlocked'
+          }
+        })
+        if (collisionDoor.status === 'Locked') {
+          collisionDoor.lockedLight.intensity = 5;
+        } else {
+          collisionDoor.lockedLight.intensity = 0;
+          collisionDoor.UNlockedLight.intensity = 8;
+        }
+      })
+    })
+    this.physics.add.collider(gameState.doors, gameState.platforms);
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
+    // Doors
     gameState.janitors = this.physics.add.group({
       allowGravity: true,
       immovable: true,
@@ -185,29 +247,6 @@ class Level extends Phaser.Scene {
         }
       }
     });
-
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-    //janitors
-
-
   }
 
   createParallaxBackgrounds() {
@@ -292,7 +331,6 @@ class Level extends Phaser.Scene {
       if (exterminatorChild.modeEXT === 'follow') {
         if (exterminatorChild.x > playerX - 5 && exterminatorChild.x < playerX + 5) {
           exterminatorChild.modeEXT = 'gas attack'
-          console.log('nulled')
           exterminatorChild.setVelocity(0)
         } else if (playerX > exterminatorChild.x) {
           exterminatorChild.setVelocityX(+110)

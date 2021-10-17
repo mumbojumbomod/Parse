@@ -20,7 +20,11 @@ class PreloadScene extends Phaser.Scene {
         this.load.image('bg3', 'assets/images/parallax/parallax3.png');
         this.load.image('bg4', 'assets/images/parallax/parallax4.png');
         this.load.image('bg5', 'assets/images/parallax/parallax5.png');
+        //DOORSPRITES
         this.load.image('door', 'assets/images/doordoo.png');
+        this.load.spritesheet('dooranim', 'assets/images/dooropening.png', { frameWidth: 48, frameHeight: 64 });
+        this.load.image('bluekey', 'assets/images/bluekey.png');
+        //DOORSPRITES
         this.load.image('H0', 'assets/images/H/H0.png');
         this.load.image('H1', 'assets/images/H/H1.png');
         this.load.image('H2', 'assets/images/H/H2.png');
@@ -30,7 +34,6 @@ class PreloadScene extends Phaser.Scene {
         this.load.image('numH', 'assets/images/H/num.png');
         this.load.image('saberdude', 'assets/images/saber/saberdude.png');
         this.load.spritesheet('idle', 'assets/images/saber/idle.png', { frameWidth: 121, frameHeight: 70 });
-        this.load.spritesheet('dooranim', 'assets/images/dooropening.png', { frameWidth: 48, frameHeight: 64 });
         this.load.spritesheet('quickspin', 'assets/images/saber/quick spin attack.png', { frameWidth: 121, frameHeight: 70 });
         this.load.spritesheet('wlak', 'assets/images/saber/move.png', { frameWidth: 40, frameHeight: 70 });
         this.load.spritesheet('fade', 'assets/images/saber/fade.png', { frameWidth: 121, frameHeight: 70 });

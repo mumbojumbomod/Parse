@@ -14,7 +14,6 @@ class Janitor extends Phaser.Physics.Arcade.Sprite {
         this.lite.setVisible(false);
         this.rand = Phaser.Math.Between(1, 2)
         this.HPrand = Phaser.Math.Between(7, 12)
-        console.log(this.rand)
         this.setPipeline('Light2D')
         this.hp = this.HPrand
         this.damage = 0
