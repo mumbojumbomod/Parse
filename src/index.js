@@ -176,6 +176,7 @@ class Level extends Phaser.Scene {
         default:
 
       }
+      //switch statement setting the key's color based on it's index.
       gameState.Bkey.add(key)
       return key;
     });
@@ -228,6 +229,7 @@ class Level extends Phaser.Scene {
       gameState.doors.children.each((door, doorIndex) => {
         gameState.Bkey.children.each((key, keyIndex) => {
           if (doorIndex === keyIndex && key.collected === true) {
+            //testing whether the index of the door and key amtch and the key has been picked up
             door.status = 'Unlocked'
           }
         })
@@ -236,6 +238,7 @@ class Level extends Phaser.Scene {
         } else {
           collisionDoor.lockedLight.intensity = 0;
           collisionDoor.UNlockedLight.intensity = 8;
+          //opens the door and sets it to opening.
           collisionDoor.emit('open')
         }
       })
