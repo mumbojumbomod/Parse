@@ -12,6 +12,8 @@ class MenuScene extends BaseScene {
         ]
     }
     create() {
+        this.anims.resumeAll()
+        //this.game.sound.startAll()
         super.create()
         this.createMenu(this.menu, this.setupMenuEvents.bind(this))
         this.titleText = this.add.text(this.config.width / 4, this.config.height - 500, "PARSE", { fontSize: '120px', fill: '#690a2d' })

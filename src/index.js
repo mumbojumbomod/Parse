@@ -421,6 +421,8 @@ class Level extends Phaser.Scene {
     }
     if (gameState.player.HPint <= 0) {
       this.scene.start("DeathScene")
+      this.anims.pauseAll()
+      this.game.sound.stopAll()
     }
     gameState.spites.children.iterate(function (child) {
       child.anims.play('spitesAnim', true);

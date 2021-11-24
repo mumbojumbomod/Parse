@@ -60,6 +60,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         super.preUpdate(time, delta)
         if (this.y >= 493) {
             this.scene.scene.start("DeathScene")
+            this.anims.pauseAll()
+            this.game.sound.stopAll()
         }
         if (this.active) {
             if (this.cursors.right.isDown) {
