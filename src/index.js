@@ -10,6 +10,7 @@ import Monster from '../assets/entities/Monster'
 import Janitor from '../assets/entities/Janitor'
 import Door from "../assets/entities/Door";
 import Bkey from "../assets/entities/Bkey";
+import DeathScene from "../assets/entities/DeathScene";
 class Level extends Phaser.Scene {
 
   constructor(key) {
@@ -419,7 +420,7 @@ class Level extends Phaser.Scene {
       gameState.HP = this.add.sprite(config.width - 30, 20, 'H1').setScrollFactor(0)
     }
     if (gameState.player.HPint <= 0) {
-      gameState.HP = this.add.sprite(config.width - 30, 20, 'H0').setScrollFactor(0)
+      this.scene.start("DeathScene")
     }
     gameState.spites.children.iterate(function (child) {
       child.anims.play('spitesAnim', true);
@@ -452,7 +453,7 @@ const config = {
 
     }
   },
-  scene: [PreloadScene, new MenuScene(shared_Config), new AboutScene(shared_Config), new Level(shared_Config)]
+  scene: [PreloadScene, new MenuScene(shared_Config), new AboutScene(shared_Config), new Level(shared_Config), new DeathScene(shared_Config)]
 };
 
 const game = new Phaser.Game(config);

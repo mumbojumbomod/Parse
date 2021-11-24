@@ -10,7 +10,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     init() {
         const bulletSoundConfig = { mute: false, volume: 100, rate: 1, detune: 0, seek: 0, loop: false, delay: 0 }
         this.Gunshot = this.scene.sound.add('Gunshot3', bulletSoundConfig);
-        this.HPint = 1000
+        this.HPint = 10
         this.active = true;
         this.cursors = this.scene.input.keyboard.createCursorKeys();
         this.setCollideWorldBounds()
