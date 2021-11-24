@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import playerAnims from './playerAnims';
 import animations from './playerAnims'
 class Player extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y) {
@@ -10,7 +11,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     init() {
         const bulletSoundConfig = { mute: false, volume: 100, rate: 1, detune: 0, seek: 0, loop: false, delay: 0 }
         this.Gunshot = this.scene.sound.add('Gunshot3', bulletSoundConfig);
-        this.HPint = 10
+        this.HPint = 1000
         this.active = true;
         this.cursors = this.scene.input.keyboard.createCursorKeys();
         this.setCollideWorldBounds()
@@ -57,7 +58,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     }
     preUpdate(time, delta) {
         super.preUpdate(time, delta)
-
+        if (this.y >= 493) {
+            this.scene.scene.start("DeathScene")
+        }
         if (this.active) {
             if (this.cursors.right.isDown) {
                 this.flip = false
