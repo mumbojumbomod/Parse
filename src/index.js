@@ -37,6 +37,7 @@ class Level extends Phaser.Scene {
       immovable: true,
     });
     const spitesObjects = map.getObjectLayer('spites')['objects'];
+    console.log(spitesObjects)
     spitesObjects.forEach(spitesObject => {
       const spite = gameState.spites.create(spitesObject.x, spitesObject.y - spitesObject.height, 'spites').setOrigin(0, 0).setPipeline('Light2D');
     });

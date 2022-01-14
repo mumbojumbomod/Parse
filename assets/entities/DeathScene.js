@@ -11,28 +11,28 @@ class DeathScene extends BaseScene {
         const getRandDeathText = () => {
             switch (randNum) {
                 case 0:
-                    DEDtext = "1"
+                    DEDtext = "As your terminal became filled with\n warnings, the ship finally plummeted into\n the depths of space.\n -me"
                     break;
                 case 1:
-                    DEDtext = "You're cluck-cluckidy dead, Hugo"//ff00ea
+                    DEDtext = "As you died, you gazed upon the starry\n nebula outiside one last time.\n -me"//ff00ea
                     break;
                 case 2:
-                    DEDtext = "3"
+                    DEDtext = "“It isn’t fair, it isn’t right,” you\n screamed, and then they were upon you.\n -Shirley Jackson"
                     break;
                 case 3:
-                    DEDtext = "4"
+                    DEDtext = "as you were compacted into a metal potato\n by the robots, you wondered, 'Why didn't I\n stay home today?'\n-me"
                     break;
                 case 4:
-                    DEDtext = "5"
+                    DEDtext = "And as your code was parsed into the main\n dataframe, you were slowly disintegrated\n from the system\n-me"
                     break;
                 default:
-                    DEDtext = "6"
+                    DEDtext = "YOU IS DED\n-not me"
                     break;
             }
             return DEDtext;
         }
 
-        let infoText = this.add.text(50, 100, getRandDeathText(Math.floor(Math.random(5))), { fontSize: '50px', fill: '#690a2d' })
+        let infoText = this.add.text(50, 100, getRandDeathText(Math.floor(Math.random(5))), { fontSize: '25px', fill: '#690a2d' })
         let playText = this.add.text(100, 50, "Click to play again", { fontSize: '40px', fill: '#690a2d' }).setInteractive()
         playText.on('pointerover', () => {
             playText.setStyle({ fill: '#8f6b78' })
