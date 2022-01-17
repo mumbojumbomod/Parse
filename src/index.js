@@ -17,15 +17,17 @@ class Level extends Phaser.Scene {
     super({ key: 'Level' });
   }
   create() {
-    gameState.player = new Player(this, 300, 0).setPipeline('Light2D')
+    gameState.player = new Player(this, 10, 0).setPipeline('Light2D')
     this.lights.enable()//.setAmbientColor(0xffffff);
     gameState.this = this
     this.createParallaxBackgrounds()
     this.createAnimations()
     const map = this.make.tilemap({ key: 'map' });
     const tileset = map.addTilesetImage('derelict_spacecraft_tiles', 'tiles');
+    const intro = map.addTilesetImage('spritesheet_lesson', 'intro');
     const backgrounds = map.createLayer('backgrounds', tileset).setPipeline('Light2D')
     gameState.platforms = map.createLayer('platforms', tileset, 0, 0).setPipeline('Light2D')//.setScale(0.9);
+
     gameState.platforms.setCollisionByExclusion(-1, true);
     gameState.player.addCollider(gameState.platforms)
     gameState.active = true
@@ -37,7 +39,6 @@ class Level extends Phaser.Scene {
       immovable: true,
     });
     const spitesObjects = map.getObjectLayer('spites')['objects'];
-    console.log(spitesObjects)
     spitesObjects.forEach(spitesObject => {
       const spite = gameState.spites.create(spitesObject.x, spitesObject.y - spitesObject.height, 'spites').setOrigin(0, 0).setPipeline('Light2D');
     });
@@ -64,6 +65,7 @@ class Level extends Phaser.Scene {
       gameState.player.HPint--
     })
     const frontA = map.createLayer('frontA', tileset).setPipeline('Light2D')
+    const introductor = map.createLayer('introdutor', intro)
     gameState.HPtext = this.add.text(config.width - 90, 18, '1000', { fontSize: '8px', fill: '#00a808' }).setScrollFactor(0);
     ///enemies
     gameState.saber = this.physics.add.group({

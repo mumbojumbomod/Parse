@@ -15,6 +15,7 @@ class PreloadScene extends Phaser.Scene {
         this.load.spritesheet('wake', 'assets/images/wake.png', { frameWidth: 117, frameHeight: 26 });
         this.load.image('bullet', 'assets/images/bullet.png');
         this.load.image('tiles', ['assets/maps/derelict_spacecraft_tiles.png', 'assets/maps/NormalMap.png']);
+        this.load.image('intro', 'assets/maps/spritesheet_lesson.png');
         this.load.image('bg1', 'assets/images/parallax/parallax1.png');
         this.load.image('bg2', 'assets/images/parallax/parallax2.png');
         this.load.image('bg3', 'assets/images/parallax/parallax3.png');
@@ -37,7 +38,7 @@ class PreloadScene extends Phaser.Scene {
         this.load.spritesheet('quickspin', 'assets/images/saber/quick spin attack.png', { frameWidth: 121, frameHeight: 70 });
         this.load.spritesheet('wlak', 'assets/images/saber/move.png', { frameWidth: 40, frameHeight: 70 });
         this.load.spritesheet('fade', 'assets/images/saber/fade.png', { frameWidth: 121, frameHeight: 70 });
-        this.load.tilemapTiledJSON('map', 'assets/maps/derelict_spacecraft_tiles.json');
+        this.load.tilemapTiledJSON('map', 'assets/maps/levelone.json');
         // Exterminator images
         this.load.spritesheet('ext_appear', 'assets/images/exterminator/appear.png', { frameWidth: 97, frameHeight: 108 });
         this.load.spritesheet('ext_attack', 'assets/images/exterminator/attack.png', { frameWidth: 97, frameHeight: 108 });

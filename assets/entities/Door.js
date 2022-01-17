@@ -19,17 +19,15 @@ class Door extends Phaser.Physics.Arcade.Sprite {
         this.once('open', () => {
             this.scene.cameras.main.fadeOut(1500, 0, 0, 0);
             this.play('dooranim', true)
-            this.on('animationcomplete', () => {
-                this.scene.physics.pause()
-                let timer3 = this.scene.time.addEvent({
-                    delay: 1500,
-                    callback: () => {
-                        //this.scene.cameras.main.fadeIn(1500, 0, 0, 0);
-                        this.scene.scene.stop('Level')
-                        this.scene.scene.start('MenuScene')
-                        this.scene.physics.resume()
-                    }
-                })
+            this.scene.physics.pause()
+            let timer3 = this.scene.time.addEvent({
+                delay: 1500,
+                callback: () => {
+                    //this.scene.cameras.main.fadeIn(1500, 0, 0, 0);
+                    this.scene.scene.stop('Level')
+                    this.scene.scene.start('MenuScene')
+                    this.scene.physics.resume()
+                }
             })
         })
 

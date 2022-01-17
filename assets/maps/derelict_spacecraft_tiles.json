@@ -1,11 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "target":"."
-        }
-    },
  "height":200,
  "infinite":false,
  "layers":[
@@ -50,11 +43,11 @@
                  "x":624,
                  "y":176
                 }],
-         "offsetx":432,
-         "offsety":0,
+         "offsetx":953.137805660512,
+         "offsety":265.202823126827,
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -103,7 +96,7 @@
          "offsety":0,
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -140,7 +133,7 @@
          "offsety":0,
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -342,7 +335,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -449,7 +442,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -488,17 +481,17 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":18,
+ "nextlayerid":20,
  "nextobjectid":66,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.3",
+ "tiledversion":"1.7.0",
  "tileheight":8,
  "tilesets":[
         {
          "columns":4,
          "firstgid":1,
-         "image":"..\/..\/..\/..\/..\/Desktop\/PHASER\/games\/Parse-es6\/assets\/maps\/derelict_spacecraft_tiles.png",
+         "image":"derelict_spacecraft_tiles.png",
          "imageheight":505,
          "imagewidth":37,
          "margin":1,
@@ -507,9 +500,22 @@
          "tilecount":224,
          "tileheight":8,
          "tilewidth":8
+        }, 
+        {
+         "columns":22,
+         "firstgid":225,
+         "image":"spritesheet_lesson.png",
+         "imageheight":300,
+         "imagewidth":200,
+         "margin":1,
+         "name":"spritesheet_lesson",
+         "spacing":1,
+         "tilecount":726,
+         "tileheight":8,
+         "tilewidth":8
         }],
  "tilewidth":8,
  "type":"map",
- "version":1.4,
+ "version":"1.6",
  "width":400
 }
